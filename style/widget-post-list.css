@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .post-container .post-item-card {
   margin-bottom: 15px;
   overflow: hidden;
@@ -113,14 +112,6 @@
     font-size: 18px;
     font-weight: bold;
     margin: 15px 0 2px; }
-  .post-container .profile-widget blockquote:before {
-    content: '“';
-    margin-right: 5px;
-    vertical-align: middle; }
-  .post-container .profile-widget blockquote:after {
-    content: '”';
-    margin-left: 5px;
-    vertical-align: bottom; }
   .post-container .profile-widget blockquote:before,
   .post-container .profile-widget blockquote:after {
     line-height: 0;
@@ -144,7 +135,8 @@
   .post-container .recent-widget ul li:last-child section {
     border-bottom: none; }
 
-.post-container .recent-widget img, .post-container .recent-widget .post-img-placeholder {
+.post-container .recent-widget img,
+.post-container .recent-widget .post-img-placeholder {
   width: 50px;
   height: 50px;
   margin-right: 5px;
