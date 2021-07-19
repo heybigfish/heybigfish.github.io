@@ -132,3 +132,182 @@ let something;
 something = "1";
 something = 1;
 ```
+
+### 类型推断
+
+`TypeScript` 会在没有明确的指定类型的时候,根据赋值推测出一个类型。
+如果定义的时候没有赋值，都会被推断成 any 类型而完全不被类型检查
+
+```ts
+let num;
+num = "7";
+num = 7;
+```
+
+### 联合类型
+
+联合类型,表示取值可以为多种类型中的一种。
+
+```ts
+let num: number | string;
+num = "1";
+num = 1;
+```
+
+**访问联合类型的属性或方法**
+当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，我们只能访问此联合类型的所有类型里共有的属性或方法：
+
+```ts
+function getLength(e: string | number) {
+  return e.length;
+}
+// 编译失败。
+```
+
+`length` 不是`number`和`string`的共有属性，所以会报错。
+
+```ts
+function toString(e: string | number) {
+  return e.toString();
+}
+// 编译成功，toString() 是共有属性。
+```
+
+当联合类型的变量在赋值的时候，会根据类型推断出一个类型。
+
+```ts
+let num: string | number;
+num = "1";
+console.log(num.length); // 编译成功，类型推断为 string，访问length成功。
+num = 1;
+console.log(num.length); // 编译报错，类型推断为 number，访问length失败。
+```
+
+### 对象的类型 - 接口 (Interfaces)
+
+在 `TypeScript` 中，使用接口来定义对象的类型，结构。
+
+```ts
+interface Person {
+  name: string;
+  age: number;
+}
+
+let tom: Person = {
+  name: "Tom",
+  age: 25,
+};
+```
+
+上面的例子中，我们定义了一个接口 `Person`，接着定义了一个变量 `tom`，它的类型是 `Person`。这样，我们就约束了 `tom` 的形状必须和接口 `Person` 一致。
+
+**赋值的时候，变量的形状必须和接口的形状保持一致**
+对象定义的变量比接口少或者多一些属性是不允许的。
+
+#### 可选属性
+
+有时我们希望不要完全匹配一个形状，那么可以用可选属性：
+
+```ts
+interface Person {
+  name: string;
+  age?: number;
+}
+
+let tom: Person = {
+  name: "Tom",
+};
+let Jenny: Person = {
+  name: "Jenny",
+  age: 21,
+};
+```
+
+使用`?`修饰的变量，可以不存在，但是 **仍然不允许添加未定义的属性。**
+
+#### 任意属性
+
+如果希望接口中允许存在任意属性的变量，可以使用`[propName: string]: any]` 进行修饰。
+
+```ts
+interface Person {
+  name: string;
+  age?: number;
+  [propName: string]: any;
+}
+
+let tom: Person = {
+  name: "Tom",
+  gender: "male",
+};
+```
+
+注意：**一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集：**
+
+```ts
+interface Person {
+  name: string;
+  age?: number;
+  [propName: string]: string;
+}
+
+let tom: Person = {
+  name: "Tom",
+  age: 25,
+  gender: "male",
+};
+//  编译失败
+```
+
+上例中，任意属性的值允许是 `string`，但是可选属性 `age` 的值却是 `number`，`number` 不是 `string` 的子属性，所以报错了。
+
+可以使用联合类型进行处理：
+
+```ts
+interface Person {
+  name: string;
+  age?: number;
+  [propName: string]: string | number;
+}
+
+let tom: Person = {
+  name: "Tom",
+  age: 25,
+  gender: "male",
+};
+```
+
+#### 只读属性
+
+如果希望对象中的部分属性，只能在被创建的时候被赋值，且不能被修改， 可以使用 `readonly` 进行修饰属性。
+
+```ts
+interface Person {
+  readonly id: number;
+  name: string;
+  age?: number;
+  [propName: string]: any;
+}
+let tom: Person = {
+  id: 9527,
+  name: "Tom",
+  age: 21,
+  gender: "male",
+};
+
+tom.id = 123; // 编译报错，id为只读属性。
+```
+
+### 数组的类型
+
+在 TypeScript 中，数组的类型有多种定义方式。
+
+#### 「类型 + 方括号」
+
+最简单、直观的一种方式。
+
+```ts
+let arr: number[] = [1, 2, 3, 4, 5];
+```
+
+上例中，数组中的每一项都必须是 `number` 类型。
