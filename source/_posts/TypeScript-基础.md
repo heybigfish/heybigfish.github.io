@@ -5,14 +5,14 @@ tags: 基础
 categories: TypeScript
 ---
 
-##### JavaScript 的特性
+**JavaScript 的特性**
 
 - 它没有类型约束，一个变量可能初始化时是字符串，又被赋值为数字。
 - 存在大量的隐士转换，变量类型难以确定。
 - 原型上的属性或方法可以在运行时被修改。
 - 解释性语言，没有编译阶段，属于动态类型。（运行时报错）
 
-##### TypeScript 的特性
+**TypeScript 的特性**
 
 - TypeScript 是添加了类型系统的 JavaScript，适用于任何规模的项目。
 - 静态类型，「类型」是 TypeScript 最核心的特性，运行前需要先编译为 JavaScript，而在编译阶段就会进行类型检查。
