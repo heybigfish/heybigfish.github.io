@@ -6,7 +6,7 @@
   <link href="https://heybigfish.github.io/atom.xml" rel="self"/>
   
   <link href="https://heybigfish.github.io/"/>
-  <updated>2021-07-19T03:25:10.465Z</updated>
+  <updated>2021-07-19T03:55:03.652Z</updated>
   <id>https://heybigfish.github.io/</id>
   
   <author>
@@ -18,25 +18,26 @@
   
   <entry>
     <title>TypeScript-基础</title>
-    <link href="https://heybigfish.github.io/2021/07/19/TypeScript/"/>
-    <id>https://heybigfish.github.io/2021/07/19/TypeScript/</id>
-    <published>2021-07-19T03:04:20.000Z</published>
-    <updated>2021-07-19T03:25:10.465Z</updated>
+    <link href="https://heybigfish.github.io/2021/07/19/TypeScript-%E5%9F%BA%E7%A1%80/"/>
+    <id>https://heybigfish.github.io/2021/07/19/TypeScript-%E5%9F%BA%E7%A1%80/</id>
+    <published>2021-07-19T03:43:54.000Z</published>
+    <updated>2021-07-19T03:55:03.652Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="TypeScript-的特性"><a href="#TypeScript-的特性" class="headerlink" title="TypeScript 的特性"></a>TypeScript 的特性</h2><h3 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h3><p><img src="/assets/wr.jpg" alt="wr"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="JavaScript-的特性"><a href="#JavaScript-的特性" class="headerlink" title="JavaScript 的特性"></a>JavaScript 的特性</h2><ul><li>它没有类型约束，一个变量可能初始化时是字符串，又被赋值为数字。</li><li>存在大量的隐士转换，变量类型难以确定。</li><li>原型上的属性或方法可以在运行时被修改。</li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;TypeScript-的特性&quot;&gt;&lt;a href=&quot;#TypeScript-的特性&quot; class=&quot;headerlink&quot; title=&quot;TypeScript 的特性&quot;&gt;&lt;/a&gt;TypeScript 的特性&lt;/h2&gt;&lt;h3 id=&quot;类型系统&quot;&gt;&lt;a href=&quot;#类</summary>
+    <summary type="html">&lt;h2 id=&quot;JavaScript-的特性&quot;&gt;&lt;a href=&quot;#JavaScript-的特性&quot; class=&quot;headerlink&quot; title=&quot;JavaScript 的特性&quot;&gt;&lt;/a&gt;JavaScript 的特性&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;它没有类型约束，一个变量可能初始</summary>
       
     
     
     
-    <category term="基础" scheme="https://heybigfish.github.io/categories/%E5%9F%BA%E7%A1%80/"/>
+    <category term="TypeScript" scheme="https://heybigfish.github.io/categories/TypeScript/"/>
     
     
-    <category term="TypeScript" scheme="https://heybigfish.github.io/tags/TypeScript/"/>
+    <category term="基础" scheme="https://heybigfish.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -69,7 +70,7 @@
     <link href="https://heybigfish.github.io/2021/07/13/%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98/"/>
     <id>https://heybigfish.github.io/2021/07/13/%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98/</id>
     <published>2021-07-13T02:02:19.000Z</published>
-    <updated>2021-07-13T09:48:53.064Z</updated>
+    <updated>2021-07-19T03:40:21.492Z</updated>
     
     <content type="html"><![CDATA[<h2 id="hi"><a href="#hi" class="headerlink" title="hi"></a>hi</h2><h3 id="bigfish"><a href="#bigfish" class="headerlink" title="bigfish"></a>bigfish</h3>]]></content>
     

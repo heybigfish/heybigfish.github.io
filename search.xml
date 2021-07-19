@@ -5,22 +5,22 @@
     
     <entry>
       <title>TypeScript-基础</title>
-      <link href="/2021/07/19/TypeScript/"/>
-      <url>/2021/07/19/TypeScript/</url>
+      <link href="/2021/07/19/TypeScript-%E5%9F%BA%E7%A1%80/"/>
+      <url>/2021/07/19/TypeScript-%E5%9F%BA%E7%A1%80/</url>
       
-        <content type="html"><![CDATA[<h2 id="TypeScript-的特性"><a href="#TypeScript-的特性" class="headerlink" title="TypeScript 的特性"></a>TypeScript 的特性</h2><h3 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h3><p><img src="/assets/wr.jpg" alt="wr"></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="JavaScript-的特性"><a href="#JavaScript-的特性" class="headerlink" title="JavaScript 的特性"></a>JavaScript 的特性</h2><ul><li>它没有类型约束，一个变量可能初始化时是字符串，又被赋值为数字。</li><li>存在大量的隐士转换，变量类型难以确定。</li><li>原型上的属性或方法可以在运行时被修改。</li></ul>]]></content>
       
       
       <categories>
           
-          <category> 基础 </category>
+          <category> TypeScript </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> TypeScript </tag>
+            <tag> 基础 </tag>
             
         </tags>
       
