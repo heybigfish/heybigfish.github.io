@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title>TypeScript</title>
+      <title>TypeScript-base</title>
       <link href="/2021/07/19/TypeScript/"/>
       <url>/2021/07/19/TypeScript/</url>
       
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> Base </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> TypeScript </tag>
+            
+        </tags>
       
     </entry>
     
