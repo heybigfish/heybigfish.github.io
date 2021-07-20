@@ -311,3 +311,125 @@ let arr: number[] = [1, 2, 3, 4, 5];
 ```
 
 上例中，数组中的每一项都必须是 `number` 类型。
+
+#### 数组泛型
+
+使用数组泛型来定义数组类型
+
+```ts
+let nums: Array<number> = [1, 1, 2, 3, 5];
+```
+
+#### 接口表示数组
+
+数组是对象，使用接口定义数组类型。
+
+```ts
+interface NumberArray {
+  [index: number]: number;
+}
+let nums: NumberArray = [1, 1, 2, 3, 5];
+```
+
+#### 类数组
+
+类数组不是普通的数组，只能使用接口进行描述。
+以 `arguments` 为例。
+
+```ts
+function count() {
+  let args: {
+    [index: number]: number;
+    length: number;
+    callee: Function;
+  } = arguments;
+}
+```
+
+事实上常用的类数组都有自己的接口定义，如 `IArguments`, `NodeList`, `HTMLCollection` 等：
+
+```ts
+function count() {
+  let args: IArguments = arguments;
+}
+```
+
+其中 `IArguments` 是 TypeScript 中定义好的内容。 等价于下例。
+
+```ts
+interface IArguments {
+  [index: number]: number;
+  length: number;
+  callee: Function;
+}
+```
+
+### 函数的类型
+
+一个函数有输入和输出，要在 TypeScript 中对其进行约束。
+
+```ts
+function count(x: number, y: number): number {
+  return x + y;
+}
+```
+
+**输入不符合约束或者输出约束的输出，都是不被允许的。**
+
+```ts
+let count = function (x: number, y: number): number {
+  return x + y;
+};
+```
+
+上例中只是对右侧的函数进行了类型定义，左侧的变量是通过类型推论而推断出了类型定义。
+
+完成示例：
+
+```ts
+let count: (x: number, y: number) => number = function (
+  x: number,
+  y: number
+): number {
+  return x + y;
+};
+```
+
+- 在 TypeScript 的类型定义中，`=>` 用来表示函数的定。
+- 在 ES6 中，=> 叫做箭头函数。
+
+函数是特殊的对象，所以也可以使用接口定义函数类型。
+
+```ts
+interface Nums {
+  (x: number, y: number): number;
+}
+let nums: Nums = function (x: number, y: number): number {
+  return x + y;
+};
+```
+
+#### 可选参数
+
+用 `?` 表示可选的参数。
+
+```ts
+function count(x: number, y: number, z?: number): number {
+  if (z) {
+    return x + y + z;
+  } else {
+    return x + y;
+  }
+}
+count(1, 2);
+```
+
+注意,**可选参数必须在必需参数后面** 也就是说，可选参数后面不允许在出现必选参数。
+
+#### 参数默认值
+
+ES6 中对函数的参数添加了默认值，在 TypeScript 中，对于添加了默认值的参数，识别为可选参数，且和参数出现顺序无关，不必遵守 【可选参数必须在必需参数后面】。
+
+#### 剩余参数
+
+ES6 中，可以使用 ...rest 的方式获取函数中的剩余参数
