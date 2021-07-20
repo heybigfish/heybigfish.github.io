@@ -246,7 +246,7 @@ let nums: NumberArray = [1, 1, 2, 3, 5];
 &#125;;
 </code></pre>
 <p>上例中只是对右侧的函数进行了类型定义，左侧的变量是通过类型推论而推断出了类型定义。</p>
-<p>完成示例：</p>
+<p>完整示例：</p>
 <pre><code class="ts">let count: (x: number, y: number) =&gt; number = function (
   x: number,
   y: number
@@ -255,8 +255,8 @@ let nums: NumberArray = [1, 1, 2, 3, 5];
 &#125;;
 </code></pre>
 <ul>
-<li>在 TypeScript 的类型定义中，<code>=&gt;</code> 用来表示函数的定。</li>
-<li>在 ES6 中，=&gt; 叫做箭头函数。</li>
+<li>在 TypeScript 的类型定义中，<code>=&gt;</code> 用来表示函数的返回值。</li>
+<li>在 ES6 中，<code>=&gt;</code> 叫做箭头函数。</li>
 </ul>
 <p>函数是特殊的对象，所以也可以使用接口定义函数类型。</p>
 <pre><code class="ts">interface Nums &#123;
