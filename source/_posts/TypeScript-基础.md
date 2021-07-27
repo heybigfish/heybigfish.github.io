@@ -8,7 +8,7 @@ categories: TypeScript
 **JavaScript 的特性**
 
 - 它没有类型约束，一个变量可能初始化时是字符串，又被赋值为数字。
-- 存在大量的隐士转换，变量类型难以确定。
+- 存在大量的隐式转换，变量类型难以确定。
 - 原型上的属性或方法可以在运行时被修改。
 - 解释性语言，没有编译阶段，属于动态类型。（运行时报错）
 
@@ -384,7 +384,7 @@ let count = function (x: number, y: number): number {
 
 上例中只是对右侧的函数进行了类型定义，左侧的变量是通过类型推论而推断出了类型定义。
 
-完成示例：
+完整示例：
 
 ```ts
 let count: (x: number, y: number) => number = function (
@@ -395,8 +395,8 @@ let count: (x: number, y: number) => number = function (
 };
 ```
 
-- 在 TypeScript 的类型定义中，`=>` 用来表示函数的定。
-- 在 ES6 中，=> 叫做箭头函数。
+- 在 TypeScript 的类型定义中，`=>` 用来表示函数的返回值。
+- 在 ES6 中，`=>` 叫做箭头函数。
 
 函数是特殊的对象，所以也可以使用接口定义函数类型。
 
@@ -430,6 +430,57 @@ count(1, 2);
 
 ES6 中对函数的参数添加了默认值，在 TypeScript 中，对于添加了默认值的参数，识别为可选参数，且和参数出现顺序无关，不必遵守 【可选参数必须在必需参数后面】。
 
-#### 剩余参数
+#### 剩余参数（rest 参数）
 
-ES6 中，可以使用 ...rest 的方式获取函数中的剩余参数
+ES6 中，可以使用 ...rest 的方式获取函数中的剩余参数，rest 是一个数组，可以通过数组的类型来定义。
+
+```ts
+function doRest(array: any[], ...items: any[]) {
+  items.forEach(function (item) {
+    array.push(item);
+  });
+}
+let arr = [];
+doRest(arr, 1, 2, 3);
+```
+
+注意：**rest 参数只能是最后一个参数**
+
+#### 重载
+
+重载允许一个函数接受不同数量、类型的参数时，做出不同的处理。
+栗子一：实现 `reverse` 函数，反转输入的参数。123==> 321; 'hello'==>'olleh'。
+
+```ts
+function reverse(x: number | string): number | string | void {
+  if (typeof x === "number") {
+    return Number(x.toString().split("").reverse().join(""));
+  } else if (typeof x === "string") {
+    return x.split("").reverse().join("");
+  }
+}
+```
+
+基本实现需求，但是会存在一个问题，函数定义比较模糊，参数为数字时，返回值应该是数字。参数为字符串时，返回值应该是字符串，上例不能很好的处理这个问题。
+
+借助函数的**重载**可以很好的解决这个问题。
+
+```ts
+function reverse(x: number): number;
+function reverse(x: string): string;
+function reverse(x: number | string): number | string | void {
+  if (typeof x === "number") {
+    return Number(x.toString().split("").reverse().join(""));
+  } else if (typeof x === "string") {
+    return x.split("").reverse().join("");
+  }
+}
+```
+
+上例中，我们重复定义了多次函数 reverse，前几次都是函数定义，最后一次是函数实现。在编辑器的代码提示中，可以正确的看到前两个提示。
+
+注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
+
+### 类型断言
+
+类型断言可以手动的指定一个值的类型。
