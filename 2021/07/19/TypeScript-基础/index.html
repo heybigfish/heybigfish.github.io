@@ -13,7 +13,7 @@ TypeScript 是添加了类型系统的 JavaScript，适用于任何规模的项�
 弱类型，完全兼容 JavaScript ，不会修改 JavaScript 运行时的特性。
 
 基础原始数据类型JavaScript 的类型分为两种：原始数据类型（Primitive data types）和对象类型（Object t.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="我的生活~" type="application/atom+xml">
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">heybigfish's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">TypeScript-基础</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">原始数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E5%80%BC"><span class="toc-text">布尔值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC"><span class="toc-text">数值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E5%80%BC"><span class="toc-text">空值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Null-%E5%92%8C-Undefined"><span class="toc-text">Null 和 Undefined</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E5%80%BC"><span class="toc-text">任意值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="toc-text">类型推断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-text">联合类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%B1%BB%E5%9E%8B-%E6%8E%A5%E5%8F%A3-Interfaces"><span class="toc-text">对象的类型 - 接口 (Interfaces)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%B1%9E%E6%80%A7"><span class="toc-text">可选属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E5%B1%9E%E6%80%A7"><span class="toc-text">任意属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AA%E8%AF%BB%E5%B1%9E%E6%80%A7"><span class="toc-text">只读属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">数组的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%80%8C%E7%B1%BB%E5%9E%8B-%E6%96%B9%E6%8B%AC%E5%8F%B7%E3%80%8D"><span class="toc-text">「类型 + 方括号」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%B3%9B%E5%9E%8B"><span class="toc-text">数组泛型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%A1%A8%E7%A4%BA%E6%95%B0%E7%BB%84"><span class="toc-text">接口表示数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E6%95%B0%E7%BB%84"><span class="toc-text">类数组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">函数的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0"><span class="toc-text">可选参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">参数默认值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0%EF%BC%88rest-%E5%8F%82%E6%95%B0%EF%BC%89"><span class="toc-text">剩余参数（rest 参数）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD"><span class="toc-text">重载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80"><span class="toc-text">类型断言</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E5%9F%BA%E7%A1%80"><i class="tag post-item-tag">基础</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">TypeScript-基础</h1><time class="has-text-grey" datetime="2021-07-19T03:43:54.000Z">2021-07-19</time><article class="mt-2 post-content"><p><strong>JavaScript 的特性</strong></p>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">heybigfish's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">TypeScript-基础</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">原始数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E5%80%BC"><span class="toc-text">布尔值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC"><span class="toc-text">数值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E5%80%BC"><span class="toc-text">空值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Null-%E5%92%8C-Undefined"><span class="toc-text">Null 和 Undefined</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E5%80%BC"><span class="toc-text">任意值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="toc-text">类型推断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-text">联合类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%B1%BB%E5%9E%8B-%E6%8E%A5%E5%8F%A3-Interfaces"><span class="toc-text">对象的类型 - 接口 (Interfaces)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%B1%9E%E6%80%A7"><span class="toc-text">可选属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E5%B1%9E%E6%80%A7"><span class="toc-text">任意属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AA%E8%AF%BB%E5%B1%9E%E6%80%A7"><span class="toc-text">只读属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">数组的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%80%8C%E7%B1%BB%E5%9E%8B-%E6%96%B9%E6%8B%AC%E5%8F%B7%E3%80%8D"><span class="toc-text">「类型 + 方括号」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%B3%9B%E5%9E%8B"><span class="toc-text">数组泛型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%A1%A8%E7%A4%BA%E6%95%B0%E7%BB%84"><span class="toc-text">接口表示数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E6%95%B0%E7%BB%84"><span class="toc-text">类数组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">函数的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0"><span class="toc-text">可选参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">参数默认值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0%EF%BC%88rest-%E5%8F%82%E6%95%B0%EF%BC%89"><span class="toc-text">剩余参数（rest 参数）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD"><span class="toc-text">重载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80"><span class="toc-text">类型断言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-text">基础语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E9%80%94"><span class="toc-text">用途</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86%E4%B8%80%E4%B8%AA%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80%E4%B8%BA%E5%85%B6%E4%B8%AD%E4%B8%80%E4%B8%AA%E7%B1%BB%E5%9E%8B"><span class="toc-text">将一个联合类型断言为其中一个类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86%E4%B8%80%E4%B8%AA%E7%88%B6%E7%B1%BB%E6%96%AD%E8%A8%80%E4%B8%BA%E5%85%B7%E4%BD%93%E7%9A%84%E5%AD%90%E7%B1%BB"><span class="toc-text">将一个父类断言为具体的子类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86%E4%BB%BB%E4%BD%95%E4%B8%80%E4%B8%AA%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80%E4%B8%BA-any"><span class="toc-text">将任何一个类型断言为 any</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86-any-%E6%96%AD%E8%A8%80%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%85%B7%E4%BD%93%E7%9A%84%E7%B1%BB%E5%9E%8B%E3%80%82"><span class="toc-text">将 any 断言为一个具体的类型。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-text">类型断言的限制</span></a></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E5%9F%BA%E7%A1%80"><i class="tag post-item-tag">基础</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">TypeScript-基础</h1><time class="has-text-grey" datetime="2021-07-19T03:43:54.000Z">2021-07-19</time><article class="mt-2 post-content"><p><strong>JavaScript 的特性</strong></p>
 <ul>
 <li>它没有类型约束，一个变量可能初始化时是字符串，又被赋值为数字。</li>
 <li>存在大量的隐式转换，变量类型难以确定。</li>
@@ -312,4 +312,119 @@ function reverse(x: number | string): number | string | void &#123;
 <p>上例中，我们重复定义了多次函数 reverse，前几次都是函数定义，最后一次是函数实现。在编辑器的代码提示中，可以正确的看到前两个提示。</p>
 <p>注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。</p>
 <h3 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h3><p>类型断言可以手动的指定一个值的类型。</p>
-</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em></section><article class="mt-6 comment-container"><script async repo="heybigfish/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/heybigfish"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> heybigfish 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
+<h4 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h4><p><code>值 as 类型</code> 或者 <code>&lt;类型&gt;值</code> ;</p>
+<p>由于 <code>&lt; &gt;</code> 也有表示泛型的意思，为了避免混淆，建议使用 <code>值 as 类型</code> 的写法进行使用类型断言。</p>
+<h4 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h4><h5 id="将一个联合类型断言为其中一个类型"><a href="#将一个联合类型断言为其中一个类型" class="headerlink" title="将一个联合类型断言为其中一个类型"></a>将一个联合类型断言为其中一个类型</h5><p>当 TypeScript 不确定一个联合类型的变量到底是哪一种时，通常只能访问联合类型中的共有属性或方法。</p>
+<pre><code class="ts">interface Cat &#123;
+  name: string;
+  run(): void;
+&#125;
+interface Fish &#123;
+  name: string;
+  swim(): void;
+&#125;
+function getName(something: Cat | Fish): string &#123;
+  return something.name;
+&#125;
+</code></pre>
+<p>有时候，不确定类型的时候就要访问一个类型特有的属性或者方法。</p>
+<pre><code class="ts">interface Cat &#123;
+  name: string;
+  run(): void;
+&#125;
+interface Fish &#123;
+  name: string;
+  swim(): void;
+&#125;
+function isCat(something: Cat | Fish): boolean &#123;
+  if (something.run) &#123;
+    return true;
+  &#125;
+  return false;
+&#125;
+</code></pre>
+<p>因为类型 Filsh 没有 run 的属性和方法，所以编译失败.<br>此时可以使用类型断言，将 something 断言为 Cat</p>
+<pre><code class="ts">interface Cat &#123;
+  name: string;
+  run(): void;
+&#125;
+interface Fish &#123;
+  name: string;
+  swim(): void;
+&#125;
+function isCat(something: Cat | Fish): boolean &#123;
+  if ((something as Cat).run) &#123;
+    return true;
+  &#125;
+  return false;
+&#125;
+</code></pre>
+<p>类型断言是能够避免编译阶段的报错，不能避免运行时的报错。<br>谨慎使用类型断言，避免产生一些不必要的错误。</p>
+<h5 id="将一个父类断言为具体的子类"><a href="#将一个父类断言为具体的子类" class="headerlink" title="将一个父类断言为具体的子类"></a>将一个父类断言为具体的子类</h5><pre><code class="ts">class Animal &#123;&#125;
+class Cat extends Animal &#123;
+  run() &#123;
+    console.log(&quot;running&quot;);
+  &#125;
+&#125;
+class Brid extends Animal &#123;
+  fly() &#123;
+    console.log(&quot;flying&quot;);
+  &#125;
+&#125;
+function doSomething(something: Animal): void &#123;
+  if ((something as Brid).fly) &#123;
+    console.log(&quot;this is brid&quot;);
+  &#125;
+&#125;
+</code></pre>
+<p><code>class</code> 实现的类，属于 JavaScript 的类，能够通过 <code>instanceof</code> 来判断 实例与类之间的关系。 [<code>something instanceof Brid</code>]</p>
+<p>一般情况下，Cat 和 Brid 只是一个 TypeScript 的接口，并不是真正意义的值，只是对象的描述信息，编译过程中会被删除，所以不能用 instanceof 进行判断。这时候只能使用 [类型断言] 进行判断。</p>
+<pre><code class="ts">interface Animal &#123;&#125;
+interface Cat extends Animal &#123;
+  run() &#123;
+    console.log(&quot;running&quot;);
+  &#125;
+&#125;
+interface Brid extends Animal &#123;
+  fly() &#123;
+    console.log(&quot;flying&quot;);
+  &#125;
+&#125;
+function doSomething(something: Animal): void &#123;
+  if ((something as Brid).fly) &#123;
+    console.log(&quot;this is brid&quot;);
+  &#125;
+&#125;
+</code></pre>
+<h5 id="将任何一个类型断言为-any"><a href="#将任何一个类型断言为-any" class="headerlink" title="将任何一个类型断言为 any"></a>将任何一个类型断言为 <code>any</code></h5><p>理想状态下，TypeScript 的类型界定具体，明确，调用类型上不存在的属性和方法时，会报错</p>
+<pre><code class="ts">const foo: number = 1;
+foo.length = 1;
+// 类型“number”上不存在属性“length”。ts
+</code></pre>
+<p>这种报错信息简单而有效。</p>
+<p>但是存在某些情况，非常确信代码不会发生错误。</p>
+<pre><code class="ts">window.foo = 1;
+// 类型“Window &amp; typeof globalThis”上不存在属性“foo”。
+</code></pre>
+<p>如果对 window 对象 添加属性 <code>foo</code>, 但是 TypeScript 编译会报错。<br>此时可以使用 <code>as any</code> 临时断言 <code>window</code> 对象为 <code>any</code> 类型。</p>
+<pre><code class="ts">(window as any).foo = 1;
+</code></pre>
+<p>需要注意的时，将一个变量断言为 <code>any</code> 是 TypeScript 中解决类型问题的最后一个手段。</p>
+<h5 id="将-any-断言为一个具体的类型。"><a href="#将-any-断言为一个具体的类型。" class="headerlink" title="将 any 断言为一个具体的类型。"></a>将 <code>any</code> 断言为一个具体的类型。</h5><p>遇到 <code>any</code> 类型的变量时，我们可以选择无视它，任由它滋生更多的 <code>any</code>。<br>我们可以选择改进它，通过类型断言及时的把 <code>any</code> 断言为精确的类型。</p>
+<pre><code class="ts">function anyAnimal(key: string): any &#123;
+  let obj = &#123;
+    name: key,
+  &#125;;
+  return obj;
+&#125;
+
+interface Cat &#123;
+  name: string;
+  run(): void;
+&#125;
+
+const tom = anyAnimal(&quot;tom&quot;) as Cat;
+tom.run();
+</code></pre>
+<p>上例中明确了 tom 的类型为 <code>Cat</code>,对于后续的维护工作比较友好。</p>
+<h4 id="类型断言的限制"><a href="#类型断言的限制" class="headerlink" title="类型断言的限制"></a>类型断言的限制</h4></article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em></section><article class="mt-6 comment-container"><script async repo="heybigfish/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/heybigfish"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> heybigfish 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
