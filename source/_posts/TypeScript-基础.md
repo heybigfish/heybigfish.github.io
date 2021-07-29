@@ -484,3 +484,169 @@ function reverse(x: number | string): number | string | void {
 ### 类型断言
 
 类型断言可以手动的指定一个值的类型。
+
+#### 基础语法
+
+`值 as 类型` 或者 `<类型>值` ;
+
+由于 `< >` 也有表示泛型的意思，为了避免混淆，建议使用 `值 as 类型` 的写法进行使用类型断言。
+
+#### 用途
+
+**将一个联合类型断言为其中一个类型**
+
+当 TypeScript 不确定一个联合类型的变量到底是哪一种时，通常只能访问联合类型中的共有属性或方法。
+
+```ts
+interface Cat {
+  name: string;
+  run(): void;
+}
+interface Fish {
+  name: string;
+  swim(): void;
+}
+function getName(something: Cat | Fish): string {
+  return something.name;
+}
+```
+
+有时候，不确定类型的时候就要访问一个类型特有的属性或者方法。
+
+```ts
+interface Cat {
+  name: string;
+  run(): void;
+}
+interface Fish {
+  name: string;
+  swim(): void;
+}
+function isCat(something: Cat | Fish): boolean {
+  if (something.run) {
+    return true;
+  }
+  return false;
+}
+```
+
+因为类型 Filsh 没有 run 的属性和方法，所以编译失败.
+此时可以使用类型断言，将 something 断言为 Cat
+
+```ts
+interface Cat {
+  name: string;
+  run(): void;
+}
+interface Fish {
+  name: string;
+  swim(): void;
+}
+function isCat(something: Cat | Fish): boolean {
+  if ((something as Cat).run) {
+    return true;
+  }
+  return false;
+}
+```
+
+类型断言是能够避免编译阶段的报错，不能避免运行时的报错。
+谨慎使用类型断言，避免产生一些不必要的错误。
+
+**将一个父类断言为具体的子类**
+
+```ts
+class Animal {}
+class Cat extends Animal {
+  run() {
+    console.log("running");
+  }
+}
+class Brid extends Animal {
+  fly() {
+    console.log("flying");
+  }
+}
+function doSomething(something: Animal): void {
+  if ((something as Brid).fly) {
+    console.log("this is brid");
+  }
+}
+```
+
+`class` 实现的类，属于 JavaScript 的类，能够通过 `instanceof` 来判断 实例与类之间的关系。 [`something instanceof Brid`]
+
+一般情况下，Cat 和 Brid 只是一个 TypeScript 的接口，并不是真正意义的值，只是对象的描述信息，编译过程中会被删除，所以不能用 instanceof 进行判断。这时候只能使用 [类型断言] 进行判断。
+
+```ts
+interface Animal {}
+interface Cat extends Animal {
+  run() {
+    console.log("running");
+  }
+}
+interface Brid extends Animal {
+  fly() {
+    console.log("flying");
+  }
+}
+function doSomething(something: Animal): void {
+  if ((something as Brid).fly) {
+    console.log("this is brid");
+  }
+}
+```
+
+**将任何一个类型断言为 `any`**
+
+理想状态下，TypeScript 的类型界定具体，明确，调用类型上不存在的属性和方法时，会报错
+
+```ts
+const foo: number = 1;
+foo.length = 1;
+// 类型“number”上不存在属性“length”。ts
+```
+
+这种报错信息简单而有效。
+
+但是存在某些情况，非常确信代码不会发生错误。
+
+```ts
+window.foo = 1;
+// 类型“Window & typeof globalThis”上不存在属性“foo”。
+```
+
+如果对 window 对象 添加属性 `foo`, 但是 TypeScript 编译会报错。
+此时可以使用 `as any` 临时断言 `window` 对象为 `any` 类型。
+
+```ts
+(window as any).foo = 1;
+```
+
+需要注意的时，将一个变量断言为 `any` 是 TypeScript 中解决类型问题的最后一个手段。
+
+**将 `any` 断言为一个具体的类型。**
+
+遇到 `any` 类型的变量时，我们可以选择无视它，任由它滋生更多的 `any`。
+我们可以选择改进它，通过类型断言及时的把 `any` 断言为精确的类型。
+
+```ts
+function anyAnimal(key: string): any {
+  let obj = {
+    name: key,
+  };
+  return obj;
+}
+
+interface Cat {
+  name: string;
+  run(): void;
+}
+
+const tom = anyAnimal("tom") as Cat;
+tom.run();
+```
+
+上例中明确了 tom 的类型为 `Cat`,对于后续的维护工作比较友好。
+
+#### 类型断言的限制
