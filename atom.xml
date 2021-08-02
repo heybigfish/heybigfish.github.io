@@ -6,7 +6,7 @@
   <link href="https://heybigfish.github.io/atom.xml" rel="self"/>
   
   <link href="https://heybigfish.github.io/"/>
-  <updated>2021-08-02T03:01:52.696Z</updated>
+  <updated>2021-08-02T03:35:13.857Z</updated>
   <id>https://heybigfish.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript-闭包</title>
+    <link href="https://heybigfish.github.io/2021/08/02/JavaScript-%E9%97%AD%E5%8C%85/"/>
+    <id>https://heybigfish.github.io/2021/08/02/JavaScript-%E9%97%AD%E5%8C%85/</id>
+    <published>2021-08-02T03:24:29.000Z</published>
+    <updated>2021-08-02T03:35:13.857Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h5><p>理解闭包，需要先理解 <code>js</code> 的变量作用域，即<strong>全局变量</strong>和<strong>局部变量</strong><br>函数内部可以直接读取全局变量，函数外部则不能读取函数内部的局部变量。<br>函数的局部变量是在函数作用域内进行工作的，为了使用函数内部的局部变量，那么可以在函数内部定义一个内部函数，这个内部函数天然可以读取外层函数的局部变量。</p><pre><code class="js">function bar() &#123;  var name = &quot;a&quot;;  function foo() &#123;    console.log(name);  &#125;&#125;</code></pre><p>这里就涉及到了 <code>js</code> 特有的链式作用域，函数 <code>foo</code> 会一层一层的向外查找所有父级对象的元素，反之则不行，既然函数 <code>foo</code> 能使用函数 <code>bar</code> 的局部变量，那么，我们把 <code>foo</code> 函数 <code>return</code> 出去，那么就可以在函数外部使用函数内部的局部变量！</p><pre><code class="js">function bar() &#123;  var name = &quot;a&quot;;  function foo() &#123;    console.log(name);  &#125;  return foo();&#125;var fc = bar();fc(); //&#39;a&#39;</code></pre><p>这里其实就是闭包。</p><h5 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h5><p><strong>「函数」和「函数内部能访问到的变量」的总和，就是一个闭包</strong><br>简单的说也就是一个能够读取到一个函数的局部变量的函数和读取的这个局部变量共同构成闭包。</p><p>从结构上来讲，闭包就是父级函数内部定义一个子函数，该子函数可以读取到父级函数的所有局部变量，构成闭包，子函数是否被 return 出去和闭包没有关系，return 出去只是为了能够正常的使用闭包。</p><h5 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h5><ul><li><p>私有化变量，处于闭包中的局部变量，除了被 return 出去的函数，没有别的途径对其进行访问。</p><blockquote><p>这里又出现了新的问题，由于 js 的垃圾回收机制，会对使用完成或者没有使用的局部变量进行回收，但是在闭包过程中，局部变量一直被 return 出去的函数调用，导致变量始终会储存在内存中。</p></blockquote></li></ul><h5 id="闭包使用过程中存在的问题"><a href="#闭包使用过程中存在的问题" class="headerlink" title="闭包使用过程中存在的问题"></a>闭包使用过程中存在的问题</h5><p>谨慎使用闭包，由于闭包的特殊性，会大量的占用内存。解决方法是，在退出函数之前，将不再使用的局部变量全部删除，或者将使用完成的函数赋值为 null，手动清除内存。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;变量的作用域&quot;&gt;&lt;a href=&quot;#变量的作用域&quot; class=&quot;headerlink&quot; title=&quot;变量的作用域&quot;&gt;&lt;/a&gt;变量的作用域&lt;/h5&gt;&lt;p&gt;理解闭包，需要先理解 &lt;code&gt;js&lt;/code&gt; 的变量作用域，即&lt;strong&gt;全局变量&lt;/stron</summary>
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://heybigfish.github.io/categories/JavaScript/"/>
+    
+    
+    <category term="基础" scheme="https://heybigfish.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>TypeScript-进阶</title>
@@ -63,6 +87,30 @@
     
     
     <category term="TypeScript" scheme="https://heybigfish.github.io/categories/TypeScript/"/>
+    
+    
+    <category term="基础" scheme="https://heybigfish.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript-this 指向问题</title>
+    <link href="https://heybigfish.github.io/2019/01/02/JavaScript-this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98/"/>
+    <id>https://heybigfish.github.io/2019/01/02/JavaScript-this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98/</id>
+    <published>2019-01-02T03:12:37.000Z</published>
+    <updated>2021-08-02T03:35:07.428Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="this-特点"><a href="#this-特点" class="headerlink" title="this 特点"></a>this 特点</h5><p>JavaScript 中 this 不是固定不变的，它会随着执行环境的改变而改变，所以具有很大的迷惑性。</p><h5 id="this-指向问题"><a href="#this-指向问题" class="headerlink" title="this 指向问题"></a>this 指向问题</h5><p>JavaScript 的 this 指向，简单的来说，我们通常可以理解为 [<strong>谁调用，this 就指向谁</strong>] ,这句话并不严谨，但是可以解释极大多数情况下的 this 指向。</p><ul><li><p>示例一</p><pre><code class="js">var x = &quot;a&quot;;function bar() &#123;  console.log(this.x);&#125;bar(); // &#39;a&#39;</code></pre><p>打印结构为<code>a</code>,即这里的 <code>this</code> 为全局对象，这里调用的 <code>bar()</code>,实际上是 <code>window.bar()</code>; <code>window</code> 也就是全局对象，所以这种情况符合 [<strong>谁调用，this 就指向谁</strong>] 这句话。</p></li><li><p>示例二</p><pre><code class="js">b = &quot;1&quot;;var a = &#123;  b: &quot;0&quot;,  bar: function () &#123;    console.log(this.b);  &#125;,&#125;;a.bar(); //&#39;0&#39;</code></pre><p>打印结果为 <code>0</code>，即这里的 <code>this</code> 指向是对象 <code>a</code>，<code>a.bar()</code>,很明显，这里是对象 <code>a</code> 调用的方法 <code>bar</code>，所以这里的 <code>this</code> 指向对象 <code>a</code>，这种情况也符合 [<strong>谁调用，this 就指向谁</strong>] 。</p></li><li><p>示例三</p><pre><code class="js">var a = &quot;1&quot;;function Test() &#123;  this.a = &quot;0&quot;;&#125;var obj = new Test();obj.a; // &#39;0&#39;`</code></pre><p>打印结果为<code>0</code>，即这里的 this 指向的是通过构造函数生成的新对象，这里情况比较特殊一点，涉及到了构造函数的一些隐式结构，当构造函数生产实例对象时，会在构造函数内容隐式的申明一个 <code>this</code> 的空对象，然后再末尾 return 出去，赋予生产的新对象，所以这里的 <code>this</code> 指向实际上就是新生产的实例对象。</p></li><li><p>示例四</p><pre><code class="js">var a = &quot;0&quot;;var obj = &#123;  a: &quot;1&quot;,  b: &#123;    a: &quot;2&quot;,    bar: function () &#123;      console.log(this.a);    &#125;,  &#125;,&#125;;obj.b.bar(); //&#39;2&#39;</code></pre></li></ul><p>这里打印结果是 <code>2</code>，很明显这里的 <code>this</code> 指向的是 <code>b</code> 对象，通过大量的实验，不难得出一个补充结论， [<strong>谁 <code>直接</code> 调用，<code>this</code> 就指向谁</strong>]，如果我们注释掉 b 对象中的 a 申明，打印结果一定会是 undefined。</p><ul><li><p>示例五 [<code>call()</code>,<code>apply()</code>]</p><pre><code class="js">var a = &#123;  typeName: &quot;call&quot;,  bar: function () &#123;    console.log(this.typeName);  &#125;,&#125;;var f1 = a.bar;f1(); // &#39;undefined&#39;f1.call(a); //&#39;call&#39;var b = &#123;  typeName: &quot;apply &quot;,  bar: function () &#123;    console.log(this.typeName);  &#125;,&#125;;var f2 = b.bar;f2.call(b); //&#39;apply&#39;</code></pre></li></ul><p><code>call()</code>和 <code>apply()</code>能够手动的更改 <code>this</code> 的指向，支持接受多个参数，第一个参数是 <code>this</code> 的具体指向，后面的参数是函数的需要的参数,不同的是 <code>apply()</code>的第二个参数接受一个数组，数组内的值为函数需要的参数。需要注意的是，如果第一个参数为 <code>null</code> 的话，则 <code>this</code> 指向全局。（</p><blockquote><p>tips：js 所有的原型链，最终都指向 Object,但是通过 call(null),apply(null)处理的对象，原型链最终指向是 null）</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;this-特点&quot;&gt;&lt;a href=&quot;#this-特点&quot; class=&quot;headerlink&quot; title=&quot;this 特点&quot;&gt;&lt;/a&gt;this 特点&lt;/h5&gt;&lt;p&gt;JavaScript 中 this 不是固定不变的，它会随着执行环境的改变而改变，所以具有很大的迷惑</summary>
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://heybigfish.github.io/categories/JavaScript/"/>
     
     
     <category term="基础" scheme="https://heybigfish.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
