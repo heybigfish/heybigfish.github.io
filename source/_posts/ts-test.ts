@@ -65,3 +65,53 @@ function judge(params: string): void {
     return false;
   }
 }
+
+function lxdy(params: any) {
+  class Animal {}
+  class Cat extends Animal {
+    run() {
+      console.log("running");
+    }
+  }
+  class Brid extends Animal {
+    fly() {
+      console.log("flying");
+    }
+  }
+  function doSomething(something: Animal): void {
+    if ((something as Brid).fly) {
+      console.log("this is brid");
+    }
+  }
+}
+const foo: number = 1;
+(window as any).foo = 1;
+
+function f1(params: any) {
+  function anyAnimal(key: string): any {
+    let obj = {
+      name: key,
+    };
+    return obj;
+  }
+
+  interface Cat {
+    name: string;
+    run(): void;
+  }
+
+  // const tom = anyAnimal("tom") as Cat;
+  // tom.run();
+  interface Person {
+    name: string;
+  }
+  interface Boy {
+    // name: string;
+    gender: string;
+  }
+  let tom: Boy = {
+    // name: "tom",
+    gender: "male",
+  };
+  let sonmeone: Person = tom;
+}

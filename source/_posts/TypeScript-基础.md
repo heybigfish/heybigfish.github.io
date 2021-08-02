@@ -651,4 +651,53 @@ tom.run();
 
 #### 限制
 
-xxxx
+并不是任何一个类型都可以被断言为任何一个类型
+具体来说 `A` 兼容（包含） `B`,那么 `A` 就能被断言为 `B`,`B` 也能被断言为 `A` 。
+
+- 联合类型可以被断言为其中的一个类型。
+- 父类可以被断言为子类
+- 子类可以被断言为父类
+
+举个栗子
+
+```ts
+interface Person {
+  name: string;
+}
+interface Boy {
+  name: string;
+  gender: string;
+}
+let tom: Boy = {
+  name: "tom",
+  gender: "male",
+};
+let sonmeone: Person = tom;
+```
+
+TypeScript 是结构性类型系统，类型之间只会比较他们之间的**最终结构**，会忽略定义时的关系。
+所以，上例中接口 `Boy` 拥有接口 `Person` 中所有的属性，所以 `TypeScript` 会认为`Boy extends Person`,即 `Boy`是`Person`的子类，所以
+`let sonmeone: Person = tom;`
+`Person` 被断言为 `Boy` [父类可以被断言为子类]
+
+第二个栗子
+
+```ts
+interface Animal {
+  name: string;
+}
+interface Cat {
+  name: string;
+  run(): void;
+}
+
+function testAnimal(animal: Animal) {
+  return animal as Cat;
+}
+function testCat(cat: Cat) {
+  return cat as Animal;
+}
+```
+
+- `animal as Cat` [父类可以被断言为子类],从类型来讲，父类兼容（包含）子类，父类可以被断言为子类。
+- `cat as Animal` [子类可以被断言为父类]，子类拥有父类的所有方法和属性，从内容来讲，子类包含父类，子类可以被断言为父类。
