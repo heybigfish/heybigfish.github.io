@@ -106,11 +106,11 @@ function f1(params: any) {
     name: string;
   }
   interface Boy {
-    // name: string;
+    name: string;
     gender: string;
   }
   let tom: Boy = {
-    // name: "tom",
+    name: "tom",
     gender: "male",
   };
   let sonmeone: Person = tom;
