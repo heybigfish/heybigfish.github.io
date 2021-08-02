@@ -1,10 +1,8 @@
 ---
-
 title: JavaScript-this 指向问题
 date: 2019-01-02 11:12:37
-tags: tags: 基础
-categories: TypeScript
-
+tags: 基础
+categories: JavaScript
 ---
 
 ##### this 特点
