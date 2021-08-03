@@ -11,8 +11,10 @@ categories: JavaScript
   将 mix 转化为数字类型，true 转化为 1，false 转化为 0，比较特殊一点的是，undefined 与其他 false 值(null,)不同,不能转化为 0，只能只能转化为 NAN
   ```js
   var a = "123";
-  Number(a); // 123 var b = true Number(b) // 1
-  var c = false / null;
+  Number(a); // 123
+  var b = true;
+  Number(b); // 1
+  var c = false || null;
   Number(c); // 0
   var d = undefined;
   Number(d); // NAN
@@ -25,7 +27,7 @@ categories: JavaScript
   ```js
   var a = "123.111";
   parseInt(a); // 123
-  var b = true / false;
+  var b = true || false;
   parseInt(b); // NAN
   var c = 11;
   parseInt(c, 2); // 3
@@ -45,7 +47,10 @@ categories: JavaScript
   - 将目标转化为字符串，undefined/null 不能进行转换。
   - 将目标值转化为 radix 进制的数字，然后返回字符串。
     ```js
-     js var a = 123; a.toString(); // '123‘ var a = 10; a.toString(8); // '12`
+    var a = 123;
+    a.toString(); // '123‘
+    var b = 10;
+    b.toString(8); // '12`
     ```
     **注意，必须是变量才会有这个方法**, 123.toString();会报错。
 
