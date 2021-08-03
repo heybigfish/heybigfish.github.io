@@ -1,0 +1,70 @@
+---
+title: JavaScript-类型转换
+date: 2021-08-02 18:02:07
+tags: 基础
+categories: JavaScript
+---
+
+###### 显式类型转换
+
+- `Number(mix)`;
+  将 mix 转化为数字类型，true 转化为 1，false 转化为 0，比较特殊一点的是，undefined 与其他 false 值(null,)不同,不能转化为 0，只能只能转化为 NAN
+  ```js
+  var a = "123";
+  Number(a); // 123 var b = true Number(b) // 1
+  var c = false / null;
+  Number(c); // 0
+  var d = undefined;
+  Number(d); // NAN
+  var e = "123abc";
+  Number(e); // NAN `
+  ```
+- `parseInt(string,radix)`;
+  将 string 转化为数字整型,以 string 首位开始查询数字，直到非数字截至，然后返回。
+  radix 参数为源数据进制，即将数据源以 radix 进制进行解析，然后返回 10 进制数值。
+  ```js
+  var a = "123.111";
+  parseInt(a); // 123
+  var b = true / false;
+  parseInt(b); // NAN
+  var c = 11;
+  parseInt(c, 2); // 3
+  ```
+- `parsetFloat(string)`
+  将 string 转化为数字浮点型，以 string 首位开始查询数字，忽略第一个小数点，直到非数字位截至。
+  ```js
+  var a = "123.111.222";
+  parsetFloat(a); // 123.111
+  ```
+- `String(str)`
+  将 str 转化为字符串类型。
+- `Boolean(str)`
+  将 str 转化为布尔值。
+- `toString(radix)`
+
+  - 将目标转化为字符串，undefined/null 不能进行转换。
+  - 将目标值转化为 radix 进制的数字，然后返回字符串。
+    ```js
+     js var a = 123; a.toString(); // '123‘ var a = 10; a.toString(8); // '12`
+    ```
+    **注意，必须是变量才会有这个方法**, 123.toString();会报错。
+
+##### 隐式类型转换
+
+- isNaN(str)
+  将 str 隐式的进行 Number(str),然后再进行 isNaN()的操作。
+- ++，--，+/-(一元正负);
+  str++,将 str 隐式的进行 Number(str),然后再进行运算操作。
+- +加号
+  加号左右两侧，出现字符串，则隐式的将两侧的类型全转换为字符串(String())
+  `var a = 1+'1'; console.log(a); //'11'`
+- \*, /, %(乘除余);
+
+  出现乘除余的运算，则两侧的类型全转换为数字类型(Number()),然后进行运算。
+
+- &&,||,!\\n 逻辑运算符，两侧隐式的转换为布尔值(Boolean())，然后进行判断。
+
+- <,>,<=,>=\\n 逻辑运算符，两侧隐式的转换为数字类型(Number()),然后进行判断。
+
+- ==,!=
+  两侧先进行类型同化，然后进行判断，出现数字时，均转化为数字(Number())，然后进行比较。
