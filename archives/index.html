@@ -9,13 +9,20 @@ function People(name,sex)&amp;#123;
   // 第一个阶段(隐式)
   // var this = &amp;#123;&amp;#125;;
   // 第二个阶段
-  this.country= &amp;#39;China&amp;#..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/08/02/JavaScript-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8F%8A%E7%BB%A7%E6%89%BF/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><time class="has-text-grey" datetime="2021-08-02T10:03:30.800Z">2021-08-02</time><p class="is-flex-grow-2 mt-2">var a = &quot;123.111&quot;;
-parseInt(a); // 123
-var b = true / false;
-parseInt(b); // NAN
+  this.country= &amp;#39;China&amp;#..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/08/02/JavaScript-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8F%8A%E7%BB%A7%E6%89%BF/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><time class="has-text-grey" datetime="2021-08-02T10:03:30.800Z">2021-08-02</time><p class="is-flex-grow-2 mt-2">/*
+ * @Author: your name
+ * @Date: 2021-08-02 18:03:30
+ * @LastEditTime: 2021-08-10 18:54:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \heybigfish.github.io\source\_posts\js.test.js
+ */
+var a = &quot;123.111&quot;;
+console.log(parseInt(a)); // 123
+var b = true;
+console.log(b); //parseInt(b); // NAN
 var c = 11;
-parseInt(c, 2); // 3
-</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/08/02/js.test/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E5%9F%BA%E7%A1%80"><i class="tag post-item-tag">基础</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/08/02/JavaScript-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">JavaScript-类型转换</a></h2><time class="has-text-grey" datetime="2021-08-02T10:02:07.000Z">2021-08-02</time><p class="is-flex-grow-2 mt-2">显式类型转换
+conso..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/08/02/js.test/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E5%9F%BA%E7%A1%80"><i class="tag post-item-tag">基础</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/08/02/JavaScript-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">JavaScript-类型转换</a></h2><time class="has-text-grey" datetime="2021-08-02T10:02:07.000Z">2021-08-02</time><p class="is-flex-grow-2 mt-2">显式类型转换
 Number(mix);将 mix 转化为数字类型，true 转化为 1，false 转化为 0，比较特殊一点的是，undefined 与其他 false 值(null,)不同,不能转化为 0，只能只能转化为 NAN
 var a = &amp;quot;123&amp;quot;;
 Number(a); // 123
@@ -37,8 +44,21 @@ function bar() &amp;#123;
   &amp;#125;
 &amp;#125;
 
-这里就涉及到了 js 特有的链式作用域，函数 foo 会一层一层的向外查找所有父级对象的元素，反之则不行，既然函数 foo 能使用函数 bar 的局部变量，那么，我们把 foo 函数 retur..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/08/02/JavaScript-%E9%97%AD%E5%8C%85/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E8%BF%9B%E9%98%B6"><i class="tag post-item-tag">进阶</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/08/02/TypeScript-%E8%BF%9B%E9%98%B6/">TypeScript-进阶</a></h2><time class="has-text-grey" datetime="2021-08-02T03:00:32.000Z">2021-08-02</time><p class="is-flex-grow-2 mt-2">hi
-</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/08/02/TypeScript-%E8%BF%9B%E9%98%B6/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E5%9F%BA%E7%A1%80"><i class="tag post-item-tag">基础</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/19/TypeScript-%E5%9F%BA%E7%A1%80/">TypeScript-基础</a></h2><time class="has-text-grey" datetime="2021-07-19T03:43:54.000Z">2021-07-19</time><p class="is-flex-grow-2 mt-2">JavaScript 的特性
+这里就涉及到了 js 特有的链式作用域，函数 foo 会一层一层的向外查找所有父级对象的元素，反之则不行，既然函数 foo 能使用函数 bar 的局部变量，那么，我们把 foo 函数 retur..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/08/02/JavaScript-%E9%97%AD%E5%8C%85/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E8%BF%9B%E9%98%B6"><i class="tag post-item-tag">进阶</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/08/02/TypeScript-%E8%BF%9B%E9%98%B6/">TypeScript-进阶</a></h2><time class="has-text-grey" datetime="2021-08-02T03:00:32.000Z">2021-08-02</time><p class="is-flex-grow-2 mt-2">类型别名类型别名用来给一个类型起一个新的名字,使用 type 修饰.
+type Name = string;
+type NameResolver = () =&amp;gt; string;
+type NameOrResolver = Name | NameResolver;
+function getName(name: NameOrResolver): void &amp;#123;
+  if (typeof n === &amp;quot;string&amp;quot;) &amp;#123;
+    return n;
+  &amp;#125; else &amp;#123;
+    return n();
+  &amp;#125;
+&amp;#125;
+
+类型别名常用于联合类型.
+字符串字面量类型字符串字面量类型用来约束取值只能是某几个字符串中的一个.
+type Ev..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/08/02/TypeScript-%E8%BF%9B%E9%98%B6/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E5%9F%BA%E7%A1%80"><i class="tag post-item-tag">基础</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/19/TypeScript-%E5%9F%BA%E7%A1%80/">TypeScript-基础</a></h2><time class="has-text-grey" datetime="2021-07-19T03:43:54.000Z">2021-07-19</time><p class="is-flex-grow-2 mt-2">JavaScript 的特性
 
 它没有类型约束，一个变量可能初始化时是字符串，又被赋值为数字。
 存在大量的隐式转换，变量类型难以确定。
