@@ -41,31 +41,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://heybigfish.github.io/2021/08/02/js.test/"/>
-    <id>https://heybigfish.github.io/2021/08/02/js.test/</id>
-    <published>2021-08-02T10:03:30.800Z</published>
-    <updated>2021-08-10T10:54:55.374Z</updated>
-    
-    <content type="html"><![CDATA[/* * @Author: your name * @Date: 2021-08-02 18:03:30 * @LastEditTime: 2021-08-10 18:54:55 * @LastEditors: Please set LastEditors * @Description: In User Settings Edit * @FilePath: \heybigfish.github.io\source\_posts\js.test.js */var a = "123.111";console.log(parseInt(a)); // 123var b = true;console.log(b); //parseInt(b); // NANvar c = 11;console.log(parseInt(c, 2)); //]]></content>
-    
-    
-      
-      
-    <summary type="html">/*
- * @Author: your name
- * @Date: 2021-08-02 18:03:30
- * @LastEditTime: 2021-08-10 18:54:55
- * @LastEditors: Please set LastEditors
- * @Des</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>JavaScript-类型转换</title>
     <link href="https://heybigfish.github.io/2021/08/02/JavaScript-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
     <id>https://heybigfish.github.io/2021/08/02/JavaScript-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</id>
@@ -119,7 +94,7 @@
     <link href="https://heybigfish.github.io/2021/08/02/TypeScript-%E8%BF%9B%E9%98%B6/"/>
     <id>https://heybigfish.github.io/2021/08/02/TypeScript-%E8%BF%9B%E9%98%B6/</id>
     <published>2021-08-02T03:00:32.000Z</published>
-    <updated>2021-08-10T11:31:09.757Z</updated>
+    <updated>2021-08-10T11:37:34.273Z</updated>
     
     <content type="html"><![CDATA[<h4 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h4><p>类型别名用来给一个类型起一个新的名字,使用 <code>type</code> 修饰.</p><pre><code class="ts">type Name = string;type NameResolver = () =&gt; string;type NameOrResolver = Name | NameResolver;function getName(name: NameOrResolver): void &#123;  if (typeof n === &quot;string&quot;) &#123;    return n;  &#125; else &#123;    return n();  &#125;&#125;</code></pre><p>类型别名常用于联合类型.</p><h4 id="字符串字面量类型"><a href="#字符串字面量类型" class="headerlink" title="字符串字面量类型"></a>字符串字面量类型</h4><p>字符串字面量类型用来约束取值只能是某几个字符串中的一个.</p><pre><code class="ts">type EventNames = &quot;click&quot; | &quot;scroll&quot; | &quot;mousemove&quot;;function handleEvent(ele: Element, event: EventNames) &#123;  // do something&#125;handleEvent(document.getElementById(&quot;hello&quot;), &quot;scroll&quot;); // 没问题handleEvent(document.getElementById(&quot;world&quot;), &quot;dblclick&quot;); // 报错，event 不能为 &#39;dblclick&#39;</code></pre><p>上例中使用了<code>type</code>定了一个字符串字面量类型<code>EventNames</code>,它只能取三种字符串中的一种.</p><blockquote><p><strong>类型别名</strong>和<strong>字符串字面量类型</strong>都是使用<code>type</code>定义的.</p></blockquote><h4 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h4><p>数组合并了相同类型的对象,而元组合并了不同类型的对象.<br>简单的栗子</p><pre><code class="ts">let boy: [string, number] = [&quot;tom&quot;, 20];</code></pre><p>可以访问,赋值正确类型的值,添加越界元素时,它的类型会被限制为元组中每个类型的联合类型.</p><pre><code class="ts">let boy: [string, number];boy = [&quot;tom&quot;, 20];boy.push(&quot;male&quot;); //successboy.push(true); //error,Argument of type &#39;true&#39; is not assignable to parameter of type &#39;string | number&#39;.</code></pre><p>因此使用元祖可以确定元素数据类型，但不要超出范围，可以把元祖理解为固定长度，超出范围不能保证其类型。</p><h4 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h4><p>枚举类型用于取值被限定在一定范围内的场景,比如一周只能是 7 天.<br>简单的例子<br>枚举使用<code>enum</code>关键字来定义.</p><pre><code class="ts">enum Days &#123;  Sun,  Mon,  Tue,  Wed,  Thu,  Fri,  Sat,&#125;</code></pre><p>枚举成员会被从<code>0</code>开始递增的数字进行赋值,同时也会对枚举名进行反向映射.</p><pre><code class="ts">enum Days &#123;  Sun,  Mon,  Tue,  Wed,  Thu,  Fri,  Sat,&#125;console.log(Days[0] === &quot;sun&quot;); //trueconsole.log(Days[&quot;Sun&quot;] === 0); //true</code></pre><h5 id="手动赋值"><a href="#手动赋值" class="headerlink" title="手动赋值"></a>手动赋值</h5><p>可以给枚举手动赋值:</p><pre><code class="ts">enum Days &#123;  Sun = 3,  Mon = 2,  Tue,  Wed,  Thu,  Fri,  Sat,&#125;console.log(Days[&quot;Sun&quot;] === 3); // trueconsole.log(Days[&quot;Mon&quot;] === 2); // trueconsole.log(Days[&quot;Tue&quot;] === 3); // trueconsole.log(Days[&quot;Sat&quot;] === 7); // true</code></pre><p>未手动赋值的枚举项会接着上一个枚举项递增,递增步长为 <strong>1</strong>。<br>如果未手动赋值的枚举项与手动赋值重复, <code>TypeScript</code> 不会察觉到这一点.</p><pre><code class="ts">enum Days &#123;  Sun = 3,  Mon = 1,  Tue,  Wed,  Thu,  Fri,  Sat,&#125;console.log(Days[&quot;Sun&quot;] === 3); // trueconsole.log(Days[&quot;Wed&quot;] === 3); // trueconsole.log(Days[3] === &quot;Sun&quot;); // falseconsole.log(Days[3] === &quot;Wed&quot;); // true 覆盖掉前一个值.</code></pre><h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p>传统方法中, <code>JavaScript</code> 通过构造函数类实现类的概念,通过原型链实现继承.<br><code>ES6</code> 中使用 <code>Class</code> 实现这些功能.</p><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><ul><li>类(Class):定义一件事物的抽象特点,包含它的属性和方法.</li><li>对象(Object):类的实例,通过<code>new</code>生成.</li><li>面向对象(OOP)的三大特性:封装、继承、多态.<ul><li>封装: 将对数据的操作细节隐藏起来,只暴露对外的接口.实现黑匣子模型,通过对外提供的接口来访问该对象,同时也保证了外界无法任意更改对象内部的数据.</li><li>继承: 子类继承父类,子类除了拥有父类的所有特征外,还有一些更具体的特性.</li><li>多态: 由继承而产生了相关的不同的类,对同一个方法可以有不同的响应.</li></ul></li><li>存取器: 用以改变属性的读取和赋值行为.</li><li>修饰器: 修饰器是一些关键字,用于限定成员或者类型的性质.</li><li>抽象类: 抽象类是供其他类继承的基类,抽象类不允许被实例化.抽象类中的抽象方法必须在子类中被实现.</li><li>接口: 不同的类之间公有的属性或者方法,可以抽象为一个接口.接口可以被类实现.一个类只能继承自另一个类,但是可以实现多个接口.</li></ul><h5 id="ES6-中的用法"><a href="#ES6-中的用法" class="headerlink" title="ES6 中的用法"></a>ES6 中的用法</h5><h6 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h6><p>使用 <code>Class</code> 定义类,使用 <code>constructor</code> 定义构造函数.<br>通过 <code>new</code> 来生成实例时,会自动调用构造函数.</p><pre><code class="ts">class Animal &#123;  public name;  constructor(name) &#123;    this.name = name;  &#125;  sayHi() &#123;    return `My name is $&#123;this.name&#125;`;  &#125;&#125;let cat = new Animal(&quot;cherry&quot;);console.log(cat.sayHi());</code></pre><h6 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h6><p>使用 <code>extends</code> 关键字实现继承,子类中使用 <code>super</code> 关键字来调用父类的构造函数和方法.</p><pre><code class="ts">class Cat extends Animal &#123;  constructor(name, color) &#123;    super(name); // 调用父类的constructor(name)    this.color = color;  &#125;  sayHi() &#123;    return &quot;cat,&quot; + super.sayHi(); // 调用父类的sayHi();  &#125;&#125;</code></pre><h6 id="存取器"><a href="#存取器" class="headerlink" title="存取器"></a>存取器</h6><p>使用 <code>getter</code> 和 <code>setter</code> 可以改变属性的赋值和读取行为:</p><pre><code class="ts">class Animal &#123;  constructor(name) &#123;    this.name = name;  &#125;  get name() &#123;    return &quot;getter&quot;;  &#125;  set name(value) &#123;    console.log(&quot;setter: &quot; + value);  &#125;&#125;let a = new Animal(&quot;Kitty&quot;); // setter: Kittya.name = &quot;Tom&quot;; // setter: Tomconsole.log(a.name); // Jack</code></pre><h6 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h6><p>使用 <code>static</code> 修饰符修饰的方法称为静态方法,他们不需要实例化,而是通过类来直接调用;</p><pre><code class="ts">class Animal &#123;  static isAnimal(a) &#123;    return a instanceof Animal;  &#125;&#125;let cat = new Animal(&quot;jack&quot;);cat.isAnimal(a); // TypeError: a.isAnimal is not a functionAnimal.isAnimal(a); // true</code></pre>]]></content>
     
