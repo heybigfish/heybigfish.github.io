@@ -1,7 +1,31 @@
 <!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>heybigfish's blog</title><meta name="description" content="永远年轻、永远热泪盈眶~"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="我的生活~" type="application/atom+xml">
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">heybigfish's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>Archives · 2021</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E5%9F%BA%E7%A1%80"><i class="tag post-item-tag">基础</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/08/16/vue3-%E5%88%9D%E8%AF%86/">vue3-初识</a></h2><time class="has-text-grey" datetime="2021-08-16T01:39:24.000Z">2021-08-16</time><p class="is-flex-grow-2 mt-2">初始 vue3
-</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/08/16/vue3-%E5%88%9D%E8%AF%86/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E5%9F%BA%E7%A1%80"><i class="tag post-item-tag">基础</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/08/02/JavaScript-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8F%8A%E7%BB%A7%E6%89%BF/">JavaScript-构造函数及继承</a></h2><time class="has-text-grey" datetime="2021-08-02T10:13:44.000Z">2021-08-02</time><p class="is-flex-grow-2 mt-2">函数JavaScript 中存在 2 种函数，即普通函数和构造函数，两者结构相同，但是用法不同。为了在形式意义上区分，构造函数习惯上首字母大写，普通函数则首字母小写。
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">heybigfish's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>Archives · 2021</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E5%9F%BA%E7%A1%80"><i class="tag post-item-tag">基础</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/08/16/vue3-%E7%BB%84%E5%90%88API/">vue3-组合API(Composition API)</a></h2><time class="has-text-grey" datetime="2021-08-16T01:39:24.000Z">2021-08-16</time><p class="is-flex-grow-2 mt-2">setupsetup 函数是一个新的组件选项，是组件内使用 组合 API（Composition API）的入口.
+
+调用顺序
+
+创建实组件实例
+初始化 props
+调用 setup 函数
+正常的组件生命周期
+
+
+
+参数
+props 作为其第一个参数
+
+props 对象是响应式的，watchEffect 或 watch 会观察和响应 props 的更新。
+
+不能 解构 props 对象，因为会使其丢失掉响应性。
+
+props 的代码空间是不可变的，尝试修改 props 时会触发警告。
+```js
+export default &amp;#123;
+  props: &amp;#123;
+    name: String,
+  &amp;#125;,
+  setup(props) &amp;#123;
+    console.log(pro..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/08/16/vue3-%E7%BB%84%E5%90%88API/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E5%9F%BA%E7%A1%80"><i class="tag post-item-tag">基础</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/08/02/JavaScript-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8F%8A%E7%BB%A7%E6%89%BF/">JavaScript-构造函数及继承</a></h2><time class="has-text-grey" datetime="2021-08-02T10:13:44.000Z">2021-08-02</time><p class="is-flex-grow-2 mt-2">函数JavaScript 中存在 2 种函数，即普通函数和构造函数，两者结构相同，但是用法不同。为了在形式意义上区分，构造函数习惯上首字母大写，普通函数则首字母小写。
 
 普通函数，简单来说就是封装代码块，实现代码块的复用。
 
