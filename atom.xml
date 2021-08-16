@@ -6,7 +6,7 @@
   <link href="https://heybigfish.github.io/atom.xml" rel="self"/>
   
   <link href="https://heybigfish.github.io/"/>
-  <updated>2021-08-03T00:56:07.322Z</updated>
+  <updated>2021-08-16T01:40:13.821Z</updated>
   <id>https://heybigfish.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue3-初识</title>
+    <link href="https://heybigfish.github.io/2021/08/16/vue3-%E5%88%9D%E8%AF%86/"/>
+    <id>https://heybigfish.github.io/2021/08/16/vue3-%E5%88%9D%E8%AF%86/</id>
+    <published>2021-08-16T01:39:24.000Z</published>
+    <updated>2021-08-16T01:40:13.821Z</updated>
+    
+    <content type="html"><![CDATA[<p>初始 vue3</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;初始 vue3&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="VUE3" scheme="https://heybigfish.github.io/categories/VUE3/"/>
+    
+    
+    <category term="基础" scheme="https://heybigfish.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript-构造函数及继承</title>
