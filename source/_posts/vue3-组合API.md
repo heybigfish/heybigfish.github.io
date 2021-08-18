@@ -255,3 +255,131 @@ const stop = watchEffect(() => {
 });
 stop();
 ```
+
+- 清除副作用
+
+  有时候 `watchEffect` 函数 会执行一些异步响应，这些响应需要在其失效时清除（异步操作完成之前状态发生改变）。
+  所以`watchEffect` 接收 `onInvalidate` 函数作为入参，用来注册清除失效的异步响应。
+  `onInvalidate`函数触发时机：
+
+  - `watchEffect`重新执行。
+  - 侦听器被停止（如果在 `setup()` 或 生命周期钩子函数中使用了 `watchEffect`, 则在卸载组件时）
+
+  ```js
+  watchEffect(({ onInvalidate }) => {
+    const token = performAsyncOperation(id.value);
+    onInvalidate(() => {
+      // id 改变时 或 停止侦听时
+      // 取消之前的异步操作
+      token.cancel();
+    });
+  });
+  ```
+
+- 副作用刷新时机
+
+  Vue 的响应式系统会缓存副作用函数，并异步的刷新，这样可以避免同一个 tick 中多个状态导致的不必要重复调用。
+  在核心的具体实现中，组件的更新函数也是一个被侦听的副作用。 当一个用户定义的副作用进入队列时，会在所有的组件更新完成之后执行。
+
+  ```html
+  <template>
+    <div>{{count}}</div>
+  </template>
+
+  <script>
+    export default {
+      setup() {
+        const count = ref(0);
+        watchEffect(() => {
+          console.log(count.value);
+        });
+        return {
+          count,
+        };
+      },
+    };
+  </script>
+  ```
+
+  在这个栗子中：
+
+  - `count` 会在初始化运行时同步打印出来。
+  - 更改 `count` 时，将在组件**更新后**执行副作用。
+
+需要注意的是，初始化运行实在组件 `mounted` 之前执行的，所以，编写副作用函数时希望文档 DOM（或者模板 ref），需要在 `onMounted` 钩子中进行。
+
+```js
+ onMounted(){
+   watchEffect(()=>{
+      // 这里可以访问 DOM 或者 template refs
+   })
+ }
+```
+
+如果副作用需要同步或在组件更新之前重新运行，我们可以传递一个拥有 `flush` 属性的对象作为选项（默认为 `post` ）
+
+```js
+  onMounted(){
+   // 同步运行。
+   watchEffect(()=>{
+      // do something
+   },
+   {
+     flush:'sync'
+   })
+
+   // 组件更新之前执行。
+   watchEffect(()=>{
+       // do something
+   },
+   {
+     flush:'pre'
+   })
+ }
+```
+
+##### `watch`
+
+`watch` API 完全等效于 2.x 的 `this.$watch`。 `watch` 需要侦听特定的数据源，并在回调函数中执行副作用函数。 默认情况下是懒执行的，也就是仅在侦听源变更时在会执行回调。
+
+- 对比 `watchEffect` , `watch`允许我们：
+
+  - 懒加载执行副作用。
+  - 更明确拿些状态的改变会触发侦听器重新运行副作用。
+  - 访问侦听状态变化前后的值。
+
+- 侦听单个数据源
+  侦听器的数据源可以时一个拥有返回值的`getter`函数,也可以时 ref 对象：
+
+  ```js
+  // 侦听一个getter
+  const state = reactive({
+    count: 0,
+  });
+  watch(
+    () => state.count,
+    (count, prevCount) => {}
+  );
+
+  // 侦听一个ref
+  // 直接侦听一个 ref
+  const count = ref(0);
+  watch(count, (count, prevCount) => {
+    /* ... */
+  });
+  ```
+
+- 侦听多个数据源
+
+  `watcher` 也可以使用数组来同时侦听多个数据源。
+
+  ```js
+  watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
+    /* ... */
+  });
+  ```
+
+- 与 `watchEffect` 共享的行为
+  `watch` 和 `watchEffect` 在停止侦听, 清除副作用 (相应地 `onInvalidate` 会作为回调的第三个参数传入)，副作用刷新时机 和 侦听器调试 等方面行为一致.
+
+#### 生命周期钩子函数
