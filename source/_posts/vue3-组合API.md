@@ -5,6 +5,8 @@ tags: 基础
 categories: VUE3
 ---
 
+![tree](/assets/tree_bqya5w2l1.png)
+
 #### setup
 
 `setup` 函数是一个新的组件选项，是组件内使用 组合 API（Composition API）的入口.
