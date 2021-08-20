@@ -5,7 +5,7 @@ tags: 基础
 categories: VUE3
 ---
 
-![tree](/assets/tree_bqya5w2l1.png)
+![tree](/assets/tree.png)
 
 #### setup
 
