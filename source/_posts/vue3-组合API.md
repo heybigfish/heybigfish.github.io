@@ -385,3 +385,59 @@ stop();
   `watch` 和 `watchEffect` 在停止侦听, 清除副作用 (相应地 `onInvalidate` 会作为回调的第三个参数传入)，副作用刷新时机 和 侦听器调试 等方面行为一致.
 
 #### 生命周期钩子函数
+
+可以直接导入 `onXXX` 一类的函数来注册生命周期钩子
+
+```js
+import { onMounted, onUpdated, onUnmounted } from "vue";
+const Mycomponent = {
+  setup() {
+    onMounted(() => {
+      console.log("mounted!");
+    });
+    onUpdated(() => {
+      console.log("updated!");
+    });
+    onUnmounted(() => {
+      console.log("unmounted!");
+    });
+  },
+};
+```
+
+这些生命周期钩子注册函数只能在 `setup()` 期间同步使用，因为它们依赖内部的全局状态来定位当前组件实例（正在调用`setup()`的组件实例），不在当前组件下调用这些函数会抛出一个错误。
+
+组件实例上下文也是在生命周期钩子同步执行期间设置的。因此，在组件卸载时，生命周期钩子内部会删除同步创建的的侦听器和计算状态。
+
+- 与 2.x 版本生命周期相对应的组合式 API
+
+  - ~~`beforeCreate`~~ -> `setup()`
+  - ~~`created`~~ -> `setup()`
+  - `beforeMount` -> `onBeforeMount`
+  - `mounted` -> `onMounted`
+  - `beforeUpdate` -> `onBeforeUpdate`
+  - `updated` -> `onUpdated`
+  - `beforeDestroy` -> `onBeforeUnmount`
+  - `destroyed` -> `onUnmounted`
+  - `errorCaptured` -> `onErrorCaptured`
+
+- 新增的钩子函数
+  除了和 2.x 生命周期等效项之外，组合式 API 还提供了新的调试钩子。
+
+  - `onRenderTracked`
+  - `onRenderTriggered`
+
+  两个钩子函数都接受一个`DebuggerEvent`,与`watchEffect`参数选项中的`onTrack`和`onTrigger`类似：
+
+  ```js
+  export default {
+    onRenderTriggered() {
+      debugger;
+      // 检查哪个依赖性导致组件重新渲染
+    },
+  };
+  ```
+
+#### 依赖注入
+
+`provide` 和 `inject` 提供依赖注入，功能类似与 2.x 的`provide`/`inject`。两者都只能在当前活动组件实力的`setup()`中调用。
