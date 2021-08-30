@@ -6,7 +6,7 @@
   <link href="https://heybigfish.github.io/atom.xml" rel="self"/>
   
   <link href="https://heybigfish.github.io/"/>
-  <updated>2021-08-24T10:59:05.348Z</updated>
+  <updated>2021-08-30T10:19:11.942Z</updated>
   <id>https://heybigfish.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript-事件(任务)循环</title>
+    <link href="https://heybigfish.github.io/2021/08/30/JavaScript-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/"/>
+    <id>https://heybigfish.github.io/2021/08/30/JavaScript-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/</id>
+    <published>2021-08-30T10:02:07.000Z</published>
+    <updated>2021-08-30T10:19:11.942Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="任务类型"><a href="#任务类型" class="headerlink" title="任务类型"></a>任务类型</h5><p><code>JavaScript</code> 是单线程语言，执行过程中会产生 2 种任务，分别是 <strong>同步任务</strong> 和 <strong>异步任务</strong></p><ul><li>同步任务：读取后立即执行，以从上到下的顺序进行执行，会阻塞线程。（同时成功、同时失败）。</li><li>异步任务：读取后通过任务队列（先进先出）的机制进行协调执行。</li></ul><h5 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h5><p>任务队列分为 <strong>微任务</strong> 和 <strong>宏任务</strong>。</p><ul><li>微任务：<code>Promise</code>,<code>process.nextTick(Node.js)</code>、<code>MutaionObserver</code>。</li><li>宏任务： <code>script</code>(JS 整体代码块)，<code>setTimeout</code>、<code>setInterval</code>、<code>setImmediate</code>、I/O、UI 交互</li></ul><h5 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h5><p>任务队列的执行过程：<br>执行过程中如果产生异步任务（微任务、宏任务），就将他们放到各自对应任务队列（微任务队列和宏任务队列）</p><ul><li>先执行一个<strong>宏任务</strong>。</li><li>当前宏任务执行完毕之后，开始执行微任务队列。</li><li>当前微任务队列清空之后，继续执行下一个宏任务，如此循环。</li></ul><p>以上不断重复的过程就叫做事件循环（Event Loop）,每一次循环都被称为 <strong>tick</strong></p><blockquote><p><code>new Promise(...)</code>中的代码，也是同步代码，会立即执行。只有 then 之后的代码，才是异步执行的代码，是一个微任务。</p></blockquote><pre><code class="js">console.log(&quot;同步任务01&quot;);setTimeout(function () &#123;  console.log(&quot;宏任务01&quot;);&#125;, 10);new Promise((resolve) =&gt; &#123;  console.log(&quot;同步任务02&quot;);  resolve();  setTimeout(() =&gt; console.log(&quot;宏任务02&quot;), 10);&#125;).then(function () &#123;  console.log(&quot;微任务01&quot;);&#125;);console.log(&quot;同步任务03&quot;);</code></pre><p><strong>步骤解析：</strong></p><ul><li><p>当前任务队列：<br>微任务[]<br>宏任务 [<code>&lt;script&gt;</code>]</p><ul><li>宏任务：</li></ul><ol><li> 输出：<code>同步任务01</code></li><li> 遇到 <code>宏任务01</code>，加入宏任务</li><li> 遇到 <code>Promise</code>，输出 <code>同步任务02</code>，直接 <code>resolve</code>，遇到 <code>宏任务02</code>，加入宏任务,遇到 <code>微任务01</code> 加入微任务。</li><li> 输出 <code>同步任务03</code>。</li><li> 第一个宏任务执行完毕。</li></ol></li><li><p>当前任务队列：<br>微任务 [<code>微任务 01</code>]<br>宏任务 [<code>宏任务 01</code>，<code>宏任务 02</code>]</p><ul><li>微任务<ol><li>执行微任务，输出<code>微任务 01</code>。</li><li>微任务队列清空完毕。</li></ol></li></ul></li><li><p>当前任务队列：<br>微任务 []<br>宏任务 [<code>宏任务 01</code>，<code>宏任务 02</code>]</p><ul><li>宏任务<ol><li>输出<code>宏任务 01</code></li><li>当前宏任务执行完毕。</li></ol></li></ul></li><li><p>当前任务队列：<br>微任务 []<br>宏任务 [<code>宏任务 02</code>]</p><ul><li>宏任务<ol><li>输出<code>宏任务 02</code></li><li>当前宏任务执行完毕。</li></ol></li></ul></li></ul><blockquote><p>同步任务 01 =&gt;同步任务 02=&gt;同步任务 03=&gt;微任务 01=&gt;宏任务 01=&gt;宏任务 02</p></blockquote><p><code>JavaScript</code> 是一门单线程语言，异步操作都是放到事件循环队列里面，等待主执行栈来执行的，并没有专门的异步执行线程</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;任务类型&quot;&gt;&lt;a href=&quot;#任务类型&quot; class=&quot;headerlink&quot; title=&quot;任务类型&quot;&gt;&lt;/a&gt;任务类型&lt;/h5&gt;&lt;p&gt;&lt;code&gt;JavaScript&lt;/code&gt; 是单线程语言，执行过程中会产生 2 种任务，分别是 &lt;strong&gt;同步任务</summary>
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://heybigfish.github.io/categories/JavaScript/"/>
+    
+    
+    <category term="基础" scheme="https://heybigfish.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>vue3-组合API(Composition API)</title>
