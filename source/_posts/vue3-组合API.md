@@ -5,7 +5,7 @@ tags: [vue3]
 categories: VUE3
 ---
 
-![tree](/images/tree.png)
+![tree.png](https://i.loli.net/2021/09/02/KgnxjCqPiLYasmo.png)
 
 #### setup
 
