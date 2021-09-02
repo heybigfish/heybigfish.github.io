@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>单例模式</title>
+      <link href="/2021/09/01/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+      <url>/2021/09/01/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p><strong>定义：保证一个类仅有一个实例，并提供一个访问它的全局访问节点。</strong></p><p>单例模式是一种常用的模式，有些对象只需要一个，例如全局缓存，window 对象等。<br>核心思想就是使用一个变量来标志当前是否已经为某个类创建过对象，如果是，则下次获取实例时，直接返回之前创建的对象。</p><h5 id="实现单例模式"><a href="#实现单例模式" class="headerlink" title="实现单例模式"></a>实现单例模式</h5><pre><code class="js">var Singleton = function (name) &#123;  this.name = name;  this.instance = null;&#125;;Singleton.getInstance = function () &#123;  if (!this.instance) &#123;    this.instance = new Singleton(name);  &#125;  return this.instance;&#125;;var a = Singleton.getInstance(&quot;sven1&quot;);var b = Singleton.getInstance(&quot;sven2&quot;);alert(a === b); // true</code></pre><p>或者</p><pre><code class="js">var Singleton = function (name) &#123;  this.name = name;&#125;;Singleton.getInstance = (function () &#123;  var instance = null;  return function (name) &#123;    if (!instance) &#123;      instance = new Singleton(name);    &#125;    return instance;  &#125;;&#125;)();</code></pre><p>通过 <code>Singleton.getInstance</code> 来获取 <code>Singleton</code> 类的唯一对象，方法相对简单，但是存在不透明性，不能使用常规的 <code>new Func</code> 来创建对象，使用者必须知道这是一个单例类，然后使用定义好的方法创建对象。</p><h5 id="透明的单例模式"><a href="#透明的单例模式" class="headerlink" title="透明的单例模式"></a>透明的单例模式</h5><p>理想中，可以和其他的普通类一样创建对象。</p><pre><code class="js">var Singleton = (function () &#123;  var instance;  var CreateObject = function (name) &#123;    if (instance) &#123;      return instance;    &#125;    this.name = name;    return (instance = this);  &#125;;  return CreateObject;&#125;)();</code></pre><p>虽然完成了一个简单的透明单例，但是也存在一定的缺点：<br>为了封装 <code>instance</code> ,使用了自执行匿名函数和闭包，并且让匿名函数返回了真正的 <code>Singleton</code> 构造方法，增加了程序的复杂性，阅读起来也不舒服。</p><h5 id="代理实现单例模式"><a href="#代理实现单例模式" class="headerlink" title="代理实现单例模式"></a>代理实现单例模式</h5><p>引入代理类的方式，来创建一个单例</p><ul><li>先创建一个简单的普通构造函数：</li></ul><pre><code class="js">var Singleton = function (name) &#123;  this.name = name;&#125;;</code></pre><ul><li>再创建一个代理类</li></ul><pre><code class="js">var ProxySingleton = (function () &#123;  var instance;  return function (callback, args) &#123;    if (!instance) &#123;      instance = new callback(args);    &#125;    return instance;  &#125;;&#125;)();</code></pre><ul><li>实现透明单例</li></ul><pre><code class="js">var a = new ProxySingleton(Singleton, &quot;111&quot;);</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> 设计模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>事件(任务)循环</title>
       <link href="/2021/08/30/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/"/>
       <url>/2021/08/30/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/</url>
