@@ -1,7 +1,7 @@
 ---
-title: JavaScript-this 指向问题
+title: this 指向问题
 date: 2019-01-02 11:12:37
-tags: 基础
+tags: [JavaScript]
 categories: JavaScript
 ---
 

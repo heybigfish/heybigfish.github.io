@@ -1,7 +1,7 @@
 ---
 title: TypeScript-基础
 date: 2021-07-19 11:43:54
-tags: 基础
+tags: [TypeScript]
 categories: TypeScript
 ---
 
