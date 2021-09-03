@@ -441,3 +441,19 @@ const Mycomponent = {
 #### 依赖注入
 
 `provide` 和 `inject` 提供依赖注入，功能类似与 2.x 的`provide`/`inject`。两者都只能在当前活动组件实力的`setup()`中调用。
+
+`inject` 接受一个可选的默认值作为第二个参数，如果没有提供默认值，并且`inject`在上下文未找到该属性，则 `inject` 返回 `undefined`.
+
+可以使用 `ref` 来保证 `provided` 和 `injected` 之间值的响应。
+
+```js
+// 提供者
+const themeRef = ref("dark");
+provide(ThemeSymbol, themeRef);
+
+// 使用者
+const theme = inject(ThemeSymbol, "light");
+watchEffect(() => {
+  console.log(`theme set to: ${theme.value}`);
+});
+```
